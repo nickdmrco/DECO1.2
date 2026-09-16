@@ -5,7 +5,8 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { CtaBand } from "@/components/home/CtaBand";
 import { Mark } from "@/components/brand/Logo";
-import { about, audienceValue, awards, differentiators, founder, site } from "@/lib/site";
+import { Photo } from "@/components/site/Photo";
+import { about, audienceValue, awards, differentiators, founder, photos, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -86,15 +87,13 @@ export default function AboutPage() {
           <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <Parallax speed={0.05}>
               <div className="relative lg:sticky lg:top-[calc(var(--header-h)+3rem)]">
-                <div className="aspect-[4/5] overflow-hidden rounded-[2rem] bg-white">
-                  {/* PENDING — photograph of George. */}
-                  <div className="flex h-full items-center justify-center p-10 text-center">
-                    <p className="text-[0.8125rem] leading-relaxed text-slate/70">
-                      Photograph of {founder.name}
-                      <br />
-                      Relaxed and approachable — at ESX, on stage, or across a table.
-                    </p>
-                  </div>
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-white">
+                  <Photo
+                    photo={photos.founderPortrait}
+                    hint={`Photograph of ${founder.name} — relaxed and approachable, at ESX or across a table.`}
+                    sizes="(max-width: 1024px) 100vw, 38vw"
+                    preload
+                  />
                 </div>
                 <span
                   aria-hidden="true"
@@ -135,6 +134,22 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* On stage — only rendered once a photograph is configured. */}
+      {photos.founderStage ? (
+        <section aria-hidden="true" className="bg-mist">
+          <div className="relative aspect-[21/9] w-full overflow-hidden">
+            <Photo
+              photo={photos.founderStage}
+              hint=""
+              sizes="100vw"
+            />
+            <span
+              className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy/35 to-transparent"
+            />
+          </div>
+        </section>
+      ) : null}
 
       {/* Awards ---------------------------------------------------------- */}
       <section className="relative overflow-hidden bg-navy py-24 lg:py-32">

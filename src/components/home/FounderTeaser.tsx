@@ -1,6 +1,7 @@
 import { GreenRule, Parallax, Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { ArrowRight, ButtonLink } from "@/components/site/Button";
-import { awards, founder } from "@/lib/site";
+import { Photo } from "@/components/site/Photo";
+import { awards, founder, photos } from "@/lib/site";
 
 /* George, as the face of the firm. The image slot is waiting for a real
    photograph: bright, natural light, relaxed and approachable. */
@@ -11,15 +12,12 @@ export function FounderTeaser() {
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-24">
           <Parallax speed={0.06} className="order-2 lg:order-1">
             <div className="relative">
-              <div className="aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-mist">
-                {/* PENDING — replace with a photograph of George. */}
-                <div className="flex h-full w-full items-center justify-center p-10 text-center">
-                  <p className="text-[0.8125rem] leading-relaxed text-slate/70">
-                    Photograph of {founder.name}
-                    <br />
-                    Bright, natural light — on stage at ESX, or across a table.
-                  </p>
-                </div>
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-mist">
+                <Photo
+                  photo={photos.founderStanding}
+                  hint={`Photograph of ${founder.name} — bright, natural light, relaxed and approachable.`}
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
               </div>
               <span
                 aria-hidden="true"

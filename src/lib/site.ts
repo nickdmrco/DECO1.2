@@ -253,3 +253,31 @@ export const faq = [
 /* VERBATIM — the contact form intro. */
 export const contactIntro =
   "Have a specific project or need personalized advice? Drop us a message below to start the conversation. Whether it's a question, feedback, or a request for a consultation, our team is here for you.";
+
+/* ------------------------------------------------------------------
+   Photography.
+
+   Brand board §06: real people doing real work, bright natural light,
+   lots of white and daylight. It should echo Mist, not a dark security
+   aesthetic. George is the face of the firm — relaxed and approachable.
+
+   Drop the files into public/images/ and set the path here. A null entry
+   keeps the labelled placeholder frame, so a file that isn't there yet
+   never ships as a broken image.
+   ------------------------------------------------------------------ */
+
+export type Photo = { src: string; alt: string };
+
+export const photos: {
+  founderPortrait: Photo | null;
+  founderStanding: Photo | null;
+  founderStage: Photo | null;
+} = {
+  // About page, 4:5 — the close headshot.
+  founderPortrait: null,
+  // Home page, 4:5 — the wider standing shot.
+  founderStanding: null,
+  // About page, 21:9 band — George on stage. Optional; the band is not
+  // rendered at all while this is null.
+  founderStage: null,
+};
