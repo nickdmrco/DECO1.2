@@ -81,11 +81,27 @@ export function Header() {
           className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-navy md:hidden"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
-            <motion.path animate={{ d: open ? "M6 6 L18 18" : "M4 8 L20 8" }} transition={{ duration: 0.3, ease: EASE }} />
-            <motion.path animate={{ opacity: open ? 0 : 1 }} d="M4 16 L20 16" transition={{ duration: 0.2 }} />
-            <motion.path animate={{ d: open ? "M18 6 L6 18" : "M4 16 L20 16", opacity: open ? 1 : 0 }} transition={{ duration: 0.3, ease: EASE }} />
-          </svg>
+          {/* Three bars folding into a cross. Transforms, not path morphing:
+              an SVG path animated from no initial `d` renders as invalid. */}
+          <span aria-hidden="true" className="relative block h-4 w-6">
+            {[
+              { top: 0, rotate: 45, y: 7 },
+              { top: 7, rotate: 0, y: 0 },
+              { top: 14, rotate: -45, y: -7 },
+            ].map((bar, i) => (
+              <motion.span
+                key={bar.top}
+                className="absolute left-0 block h-[2px] w-6 rounded-full bg-current"
+                style={{ top: bar.top }}
+                animate={
+                  open
+                    ? { y: bar.y, rotate: bar.rotate, opacity: i === 1 ? 0 : 1 }
+                    : { y: 0, rotate: 0, opacity: 1 }
+                }
+                transition={{ duration: 0.35, ease: EASE }}
+              />
+            ))}
+          </span>
         </button>
       </div>
 

@@ -17,8 +17,10 @@ export function Stats() {
             </dd>
           </Reveal>
           <Reveal delay={0.08}>
+            {/* Years are stated, not counted: a count-up spends a second
+                displaying a year that isn't true. */}
             <dt className="text-[clamp(2.5rem,6vw,3.5rem)] font-semibold leading-none tracking-[-0.03em] text-white">
-              <Counter to={2011} from={1981} />
+              2011
             </dt>
             <span className="mt-4 block h-[3px] w-10 bg-green" aria-hidden="true" />
             <dd className="mt-4 text-[0.9375rem] text-white/70">
@@ -27,7 +29,7 @@ export function Stats() {
           </Reveal>
           <Reveal delay={0.16}>
             <dt className="text-[clamp(2.5rem,6vw,3.5rem)] font-semibold leading-none tracking-[-0.03em] text-white">
-              <Counter to={1981} from={1960} />
+              1981
             </dt>
             <span className="mt-4 block h-[3px] w-10 bg-green" aria-hidden="true" />
             <dd className="mt-4 text-[0.9375rem] text-white/70">
