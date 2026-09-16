@@ -64,6 +64,7 @@ export function Mark({
   className,
   tone = "default",
   animate = "none",
+  trigger = "mount",
   delay = 0,
   style,
 }: {
@@ -71,6 +72,8 @@ export function Mark({
   tone?: LogoTone;
   /** "draw" traces each hook, then slides them into the lock. */
   animate?: "draw" | "none";
+  /** Run on mount, or the first time the mark scrolls into view. */
+  trigger?: "mount" | "view";
   delay?: number;
   style?: CSSProperties;
 }) {
@@ -88,6 +91,11 @@ export function Mark({
     ease: [0.22, 1, 0.36, 1],
   });
 
+  /* Motion's `animate` fires on mount; `whileInView` waits for the scroll. */
+  const run = (to: Record<string, number>) =>
+    trigger === "view" ? { whileInView: to } : { animate: to };
+  const viewport = trigger === "view" ? { once: true, margin: "0px 0px -15% 0px" } : undefined;
+
   return (
     <svg
       viewBox="-57 -57 114 114"
@@ -103,7 +111,8 @@ export function Mark({
         <motion.g
           key={hook.d}
           initial={draw ? { x: hook.from.x, y: hook.from.y, opacity: 0 } : false}
-          animate={draw ? { x: 0, y: 0, opacity: 1 } : undefined}
+          {...(draw ? run({ x: 0, y: 0, opacity: 1 }) : {})}
+          viewport={viewport}
           transition={settle(i)}
         >
           <motion.path
@@ -114,7 +123,8 @@ export function Mark({
             strokeLinecap="butt"
             strokeLinejoin="miter"
             initial={draw ? { pathLength: 0, opacity: 0 } : false}
-            animate={draw ? { pathLength: 1, opacity: 1 } : undefined}
+            {...(draw ? run({ pathLength: 1, opacity: 1 }) : {})}
+            viewport={viewport}
             transition={trace(i)}
           />
         </motion.g>
@@ -205,6 +215,7 @@ type LockupProps = {
   size?: number;
   tone?: LogoTone;
   animate?: "draw" | "none";
+  trigger?: "mount" | "view";
   delay?: number;
   className?: string;
   title?: string;
@@ -214,6 +225,7 @@ export function LogoHorizontal({
   size = 26,
   tone = "default",
   animate = "none",
+  trigger = "mount",
   delay = 0,
   className,
   title = "DECO Ventures",
@@ -230,6 +242,7 @@ export function LogoHorizontal({
       <Mark
         tone={tone}
         animate={animate}
+        trigger={trigger}
         delay={delay}
         style={{ width: `${m.markBox}em`, height: `${m.markBox}em`, flex: "none" }}
       />
@@ -242,6 +255,7 @@ export function LogoStacked({
   size = 40,
   tone = "default",
   animate = "none",
+  trigger = "mount",
   delay = 0,
   className,
   title = "DECO Ventures",
@@ -258,6 +272,7 @@ export function LogoStacked({
       <Mark
         tone={tone}
         animate={animate}
+        trigger={trigger}
         delay={delay}
         style={{ width: `${m.markBox}em`, height: `${m.markBox}em` }}
       />

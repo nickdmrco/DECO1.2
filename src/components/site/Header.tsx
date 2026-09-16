@@ -18,8 +18,7 @@ export function Header() {
 
   useMotionValueEvent(scrollY, "change", (y) => setCondensed(y > 24));
 
-  // Close the mobile panel on navigation, and lock the page behind it.
-  useEffect(() => setOpen(false), [pathname]);
+  // Lock the page behind the mobile panel while it's open.
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -112,6 +111,7 @@ export function Header() {
                   >
                     <Link
                       href={item.href}
+                      onClick={() => setOpen(false)}
                       className="block border-b border-line py-4 text-h3 text-navy"
                     >
                       {item.label}
@@ -119,7 +119,7 @@ export function Header() {
                   </motion.li>
                 ))}
               </ul>
-              <ButtonLink href="/contact" className="mt-6 w-full">
+              <ButtonLink href="/contact" onClick={() => setOpen(false)} className="mt-6 w-full">
                 Request a consultation
                 <ArrowRight />
               </ButtonLink>

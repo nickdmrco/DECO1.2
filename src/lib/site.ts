@@ -130,3 +130,43 @@ export const stats = [
   { value: 2011, suffix: "", label: "Advising owners since", raw: true },
   { value: 6, suffix: "", label: "Practice areas" },
 ] as const;
+
+/* How we work — the tagline, turned into three phases.
+   PLACEHOLDER copy in the brand voice; swap for George's own words. */
+export const process = [
+  {
+    key: "Guide",
+    tone: "blue" as const,
+    title: "Start with what is actually happening",
+    body:
+      "Before anyone proposes anything, we look at the business as it really runs today — the numbers, the org chart, the pipeline, and the things people only say off the record. Most engagements find the real problem somewhere other than where it was reported.",
+  },
+  {
+    key: "Innovate",
+    tone: "navy" as const,
+    title: "Build the plan you can actually run",
+    body:
+      "A strategy nobody executes is an expensive document. We size the moves to the team you have, sequence them, and put names and dates against them. Where new technology helps, we say so. Where it does not, we say that too.",
+  },
+  {
+    key: "Thrive",
+    tone: "green" as const,
+    title: "Stay until it is working",
+    body:
+      "We stay in the room through execution — quarterly reviews, course corrections, and the hard conversations. The goal is a business that runs well without us, and an owner with options when it matters.",
+  },
+];
+
+/* PLACEHOLDER — George's bio. Swap for the real copy and add a photo. */
+export const founder = {
+  name: "George De Marco",
+  role: "Founder & Managing Director",
+  blurb:
+    "Four decades in security and life safety — as an operator, an owner, and an industry leader. George founded DECO Ventures in 2011 to give owners the counsel he wished he had had: direct, experienced, and firmly on their side of the table.",
+  credentials: [
+    "40+ years in the security and life safety industry",
+    "Former integrator owner and operator",
+    "Industry association leadership and ESX programming",
+    "Advisor on dozens of growth, succession, and exit engagements",
+  ],
+};

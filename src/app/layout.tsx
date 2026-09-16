@@ -1,8 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
-import { Header } from "@/components/site/Header";
-import { Footer } from "@/components/site/Footer";
-import { ScrollProgress } from "@/components/motion";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -42,18 +39,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={outfit.variable}>
-      <body className="antialiased">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-deep focus:px-5 focus:py-3 focus:text-white"
-        >
-          Skip to content
-        </a>
-        <ScrollProgress />
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
