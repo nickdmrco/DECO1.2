@@ -13,8 +13,10 @@ const schema = z.object({
   role: z.string().trim().max(160).optional().or(z.literal("")),
   topic: z.string().trim().max(160).optional().or(z.literal("")),
   message: z.string().trim().min(10, "Tell us a little more — 10 characters minimum.").max(5000),
-  /* Honeypot. Real people leave it empty; bots fill everything in. */
-  website: z.string().max(0).optional().or(z.literal("")),
+  /* Honeypot. Real people leave it empty; bots fill everything in. Kept
+     permissive here so a filled one never surfaces as a named field error
+     — that would tell the bot exactly what tripped it. */
+  website: z.string().optional(),
 });
 
 const escapeHtml = (value: string) =>
