@@ -109,7 +109,17 @@ failure is logged, not pushed onto them.
    Environment Variables**.
 3. Add `decoventures.com` under **Domains**.
 
-No build configuration needed — Vercel detects Next.js.
+`vercel.json` pins `"framework": "nextjs"`, which overrides whatever the
+project auto-detected when it was first created. That matters here: this repo
+was imported while `main` held nothing but a README, so Vercel had no
+framework to detect and would otherwise keep building the project as a plain
+static site — install succeeds, the deployment reports Ready, and every path
+returns Vercel's own 404 because no Next.js output was ever captured.
+
+**Production builds `main`.** A branch only ever produces a Preview
+deployment, at its own URL. Until the site is on `main`, the Production URL
+serves whatever `main` contains. Either merge the branch, or change
+**Settings → Git → Production Branch**.
 
 ---
 
