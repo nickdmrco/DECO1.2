@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
-import { Positioning } from "@/components/home/Positioning";
+import { Challenges } from "@/components/home/Challenges";
 import { ServiceRail } from "@/components/home/ServiceRail";
 import { Pillars } from "@/components/home/Pillars";
 import { Stats } from "@/components/home/Stats";
@@ -22,7 +22,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
-      <Positioning />
+      <Challenges />
       <ServiceRail />
       <Pillars />
       <Stats />

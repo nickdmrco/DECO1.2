@@ -169,6 +169,15 @@ export const differentiators = [
   "Relationships across the whole industry",
 ];
 
+/* ADAPTED — the four pressures named in the About page's approach
+   paragraph, split out so the home page can lead with them. */
+export const challenges = [
+  "Evolving technology.",
+  "Competitive landscapes.",
+  "Regulatory complexity.",
+  "Consolidation pressure.",
+];
+
 /* ADAPTED from the About page. */
 export const about = {
   lede:
