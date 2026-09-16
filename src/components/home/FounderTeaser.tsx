@@ -1,6 +1,6 @@
-import { GreenRule, Parallax, Reveal } from "@/components/motion";
+import { GreenRule, Parallax, Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { ArrowRight, ButtonLink } from "@/components/site/Button";
-import { founder } from "@/lib/site";
+import { awards, founder } from "@/lib/site";
 
 /* George, as the face of the firm. The image slot is waiting for a real
    photograph: bright, natural light, relaxed and approachable. */
@@ -12,7 +12,7 @@ export function FounderTeaser() {
           <Parallax speed={0.06} className="order-2 lg:order-1">
             <div className="relative">
               <div className="aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-mist">
-                {/* PLACEHOLDER — replace with a photograph of George. */}
+                {/* PENDING — replace with a photograph of George. */}
                 <div className="flex h-full w-full items-center justify-center p-10 text-center">
                   <p className="text-[0.8125rem] leading-relaxed text-slate/70">
                     Photograph of {founder.name}
@@ -30,30 +30,33 @@ export function FounderTeaser() {
 
           <div className="order-1 lg:order-2">
             <Reveal>
-              <p className="label text-slate">The firm</p>
+              <p className="label text-slate">{founder.role}</p>
             </Reveal>
             <Reveal delay={0.06}>
-              <h2 className="mt-3 text-h2 text-navy sm:text-h1">
-                Forty years in the industry, on your side of the table
-              </h2>
+              <h2 className="mt-3 text-h2 text-navy sm:text-h1">{founder.name}</h2>
             </Reveal>
             <GreenRule className="mt-5" delay={0.12} />
             <Reveal delay={0.16}>
               <p className="mt-7 text-body text-slate">{founder.blurb}</p>
             </Reveal>
+
             <Reveal delay={0.22}>
-              <ul className="mt-8 space-y-3">
-                {founder.credentials.map((line) => (
-                  <li key={line} className="flex gap-3 text-[0.9375rem] text-navy">
+              <p className="label mt-10 text-slate">Awards &amp; milestones</p>
+            </Reveal>
+            <Stagger as="ul" className="mt-5 space-y-3" gap={0.06}>
+              {awards.map((line) => (
+                <StaggerItem key={line} as="li">
+                  <div className="flex gap-3 text-[0.9375rem] text-navy">
                     <span
                       aria-hidden="true"
                       className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green"
                     />
                     {line}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+
             <Reveal delay={0.28}>
               <ButtonLink href="/about" variant="secondary" className="mt-10">
                 Meet George

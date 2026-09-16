@@ -14,16 +14,18 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Strategic guidance for security and life safety`,
+    default: `${site.name} — Strategic guidance for the security and life safety industry`,
     template: `%s — ${site.name}`,
   },
-  description: site.positioning,
+  description:
+    "Consulting and advisory for the security and life safety industry: leadership, growth, operations, industry networking, technology, and M&A. Founded in 2011 by George De Marco.",
   openGraph: {
     type: "website",
     siteName: site.name,
     url: site.url,
     title: `${site.name} — ${site.tagline}`,
     description: site.positioning,
+    locale: "en_US",
   },
   twitter: { card: "summary_large_image" },
   icons: {

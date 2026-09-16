@@ -9,7 +9,8 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Strategy and growth, leadership, operations and finance, industry networking, technology, and M&A advisory for the security and life safety industry.",
+    "Leadership and organizational development, strategy and growth, operational and financial excellence, industry networking, innovative technology, and investment and M&A advisory for the security and life safety industry.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {
@@ -17,8 +18,14 @@ export default function ServicesPage() {
     <>
       <PageHero
         label="What we do"
-        title="Strategic guidance for the business of security and life safety"
-        lede="Six practice areas, one point of contact. Most engagements start in one and end up touching two or three — because the problems do."
+        title="Securing your tomorrow"
+        lede={
+          <p>
+            Strategic guidance for the security and life safety industry. Six practice
+            areas, one point of contact — most engagements start in one and end up
+            touching two or three.
+          </p>
+        }
       >
         <nav aria-label="Services" className="mt-12 flex flex-wrap gap-2.5">
           {services.map((service) => (
@@ -59,6 +66,11 @@ export default function ServicesPage() {
                   <p className="mt-7 max-w-md text-[1.125rem] leading-[1.6] text-navy">
                     {service.summary}
                   </p>
+                  {service.note ? (
+                    <p className="mt-6 max-w-md border-l-2 border-green pl-4 text-[0.9375rem] leading-[1.55] text-slate">
+                      {service.note}
+                    </p>
+                  ) : null}
                 </Reveal>
 
                 <Reveal from={i % 2 === 1 ? "left" : "right"} delay={0.1}>
@@ -84,7 +96,7 @@ export default function ServicesPage() {
                   </Stagger>
                   <Reveal delay={0.25}>
                     <ButtonLink href="/contact" variant="secondary" size="sm" className="mt-8">
-                      Talk about {service.title.split(" ")[0].toLowerCase()}
+                      Request a consultation
                       <ArrowRight />
                     </ButtonLink>
                   </Reveal>

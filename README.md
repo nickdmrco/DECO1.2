@@ -73,6 +73,9 @@ what is missing until you configure it.
    `/admin` detects it and prints the exact statement to run, with the id
    filled in.
 5. Sign in at `/admin/login`.
+6. Optionally run `supabase/seed.sql`. It creates the four articles from the
+   old blog as empty **drafts**, ready for you to paste the text into. The old
+   blog rendered its posts with scripts, so only the titles could be captured.
 
 ### How access is enforced
 
@@ -152,6 +155,24 @@ cap height of "DECO" in px.
 
 Brand tokens — the seven palette colors, the web type scale, the green rule,
 and the split bar — are defined once in `src/app/globals.css`.
+
+### Copy provenance
+
+`src/lib/site.ts` marks every block:
+
+- `VERBATIM` — copy from the existing decoventures.com, unchanged.
+- `ADAPTED` — the same copy in the brand voice, or split into bullets. No new
+  claims: every fact traces back to the handover brief.
+- `PENDING` — still waiting.
+
+Fixes carried over from the handover brief: the template contact details
+(New York address, Consultinghub email, phone, opening hours) are gone; the
+menu and the services section now list the same six practice areas; the meta
+description says what the firm actually does; the "not a broker" qualification
+travels with the M&A service everywhere it appears; "Since 2011" (the firm) is
+kept distinct from "four decades" (George's career); and `All Right Reserved`
+is now `All Rights Reserved`. There is no events section — the old one was
+eighteen months stale and no current dates were supplied.
 
 ### One thing to decide
 

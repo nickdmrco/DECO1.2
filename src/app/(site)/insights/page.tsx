@@ -8,7 +8,8 @@ import { getPublishedPosts } from "@/lib/posts.server";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Perspective on growth, succession, operations, technology, and M&A in the security and life safety industry.",
+    "Articles from George De Marco on the security and life safety industry — trends, challenges, and practical advice for owners and executives.",
+  alternates: { canonical: "/insights" },
 };
 
 export const revalidate = 300;
@@ -20,11 +21,11 @@ export default async function InsightsPage() {
     <>
       <PageHero
         label="Insights"
-        title="What we're seeing in the industry"
+        title="Insights from the industry"
         lede={
           <p>
-            Notes from the field on growth, succession, operations, technology, and the
-            deals that shape the industry. Written the way we talk.
+            Articles from George De Marco on trends, challenges, and the practical side
+            of running a security and life safety business.
           </p>
         }
       />

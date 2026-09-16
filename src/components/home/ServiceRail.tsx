@@ -72,8 +72,9 @@ export function ServiceRail() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="label text-green">What we do</p>
-            <h2 id="what-we-do-title" className="mt-3 max-w-xl text-h2 text-white sm:text-h1">
-              Six places an owner gets stuck. We work all six.
+            <h2 id="what-we-do-title" className="mt-3 max-w-2xl text-h2 text-white sm:text-h1">
+              Securing your tomorrow — strategic guidance for the security &amp; life
+              safety industry
             </h2>
           </div>
           <ButtonLink href="/services" variant="ghostLight" size="sm" className="shrink-0">
@@ -110,6 +111,11 @@ export function ServiceRail() {
                 <p className="mt-5 text-[0.9375rem] leading-[1.6] text-white/70">
                   {service.summary}
                 </p>
+                {service.note ? (
+                  <p className="mt-3 text-[0.8125rem] leading-[1.5] text-white/45">
+                    {service.note}
+                  </p>
+                ) : null}
                 <span className="mt-auto inline-flex items-center gap-2 pt-8 text-[0.9375rem] font-medium text-green">
                   Read more
                   <ArrowRight />

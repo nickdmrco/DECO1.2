@@ -13,7 +13,7 @@ export function InsightsTeaser({ posts }: { posts: Post[] }) {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             label="Insights"
-            title="What we're seeing in the industry"
+            title="Insights from the industry"
           />
           <Reveal delay={0.1}>
             <ButtonLink href="/insights" variant="secondary" size="sm">

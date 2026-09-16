@@ -1,6 +1,7 @@
 import { Mark } from "@/components/brand/Logo";
 import { Reveal } from "@/components/motion";
 import { ArrowRight, ButtonLink } from "@/components/site/Button";
+import { contactIntro } from "@/lib/site";
 
 export function CtaBand() {
   return (
@@ -14,14 +15,11 @@ export function CtaBand() {
       <div className="relative mx-auto max-w-[76rem] px-6 py-24 text-center lg:px-8 lg:py-32">
         <Reveal>
           <h2 className="mx-auto max-w-2xl text-h2 text-white sm:text-h1">
-            Tell us what you&rsquo;re working on.
+            Request your consultation
           </h2>
         </Reveal>
         <Reveal delay={0.08}>
-          <p className="mx-auto mt-6 max-w-xl text-body text-white/70">
-            A first conversation is exactly that — a conversation. No deck, no pitch.
-            Bring the question that has been sitting on your desk.
-          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-body text-white/70">{contactIntro}</p>
         </Reveal>
         <Reveal delay={0.14}>
           <div className="mt-10 flex flex-wrap justify-center gap-4">

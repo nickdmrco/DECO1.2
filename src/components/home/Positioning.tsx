@@ -1,8 +1,9 @@
 import { Reveal, GreenRule } from "@/components/motion";
 import { Mark } from "@/components/brand/Logo";
+import { about } from "@/lib/site";
 
-/* What the mark means — the clearest statement of the partnership, given
-   room to breathe. Mostly white, per the color balance. */
+/* What the mark means, and what the firm is. Mostly white, per the color
+   balance in the brand board. */
 export function Positioning() {
   return (
     <section className="relative overflow-hidden bg-white py-28 lg:py-36">
@@ -22,12 +23,10 @@ export function Positioning() {
               </p>
             </Reveal>
             <Reveal delay={0.18}>
-              <p className="mt-8 max-w-xl text-body text-slate">
-                DECO Ventures is a strategic advisory firm for the security and life
-                safety industry. We work with owners and leadership teams on the
-                decisions that are too consequential to get wrong and too close to see
-                clearly from the inside.
-              </p>
+              <p className="mt-8 max-w-xl text-body text-slate">{about.lede}</p>
+            </Reveal>
+            <Reveal delay={0.24}>
+              <p className="mt-5 max-w-xl text-body text-slate">{about.whoWeHelp}</p>
             </Reveal>
           </div>
 

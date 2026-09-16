@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { GreenRule, Reveal } from "@/components/motion";
 import { ContactForm } from "@/components/site/ContactForm";
+import { Faq } from "@/components/site/Faq";
 import { PageHero } from "@/components/site/PageHero";
-import { audiences, site } from "@/lib/site";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { audienceValue, contactIntro, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Request a consultation with DECO Ventures. A first conversation is exactly that — no deck, no pitch.",
+    "Request a consultation with DECO Ventures. Advisory for the security and life safety industry, based in Southern California.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -15,13 +18,8 @@ export default function ContactPage() {
     <>
       <PageHero
         label="Get in touch"
-        title="Tell us what you're working on"
-        lede={
-          <p>
-            A first conversation is exactly that — a conversation. No deck, no pitch.
-            Bring the question that has been sitting on your desk.
-          </p>
-        }
+        title="Send us a message"
+        lede={<p>{contactIntro}</p>}
       />
 
       <section className="bg-white py-20 lg:py-28">
@@ -76,20 +74,24 @@ export default function ContactPage() {
 
                 <p className="label mt-12 text-slate">Who we work with</p>
                 <GreenRule className="mt-4" />
-                <ul className="mt-6 space-y-2.5 text-[0.9375rem] text-navy">
-                  {audiences.map((audience) => (
-                    <li key={audience} className="flex gap-3">
-                      <span
-                        aria-hidden="true"
-                        className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green"
-                      />
-                      {audience}
+                <ul className="mt-6 space-y-5">
+                  {audienceValue.map((item) => (
+                    <li key={item.who}>
+                      <p className="text-[0.9375rem] font-medium text-navy">{item.who}</p>
+                      <p className="mt-1 text-[0.875rem] text-slate">{item.value}</p>
                     </li>
                   ))}
                 </ul>
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line bg-mist py-20 lg:py-28">
+        <div className="mx-auto max-w-[46rem] px-6">
+          <SectionHeading label="Questions" title="Before you write" align="center" />
+          <Faq />
         </div>
       </section>
     </>

@@ -86,7 +86,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col gap-3 border-t border-white/15 pt-8 text-[0.8125rem] text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.name}. All rights reserved.
+            © {year} {site.legalName}. All Rights Reserved.
           </p>
           <p>{site.tagline}</p>
         </div>
