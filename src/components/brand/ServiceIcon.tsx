@@ -21,7 +21,7 @@ export function ServiceIcon({
   slug,
   className = "h-8 w-8",
   blue = "var(--color-blue)",
-  green = "var(--color-green)",
+  green = "var(--color-kelp)",
 }: Props & { slug: string }) {
   switch (slug) {
     /* Strategy & Growth — a rising line clearing the plateau. */

@@ -3,7 +3,9 @@
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
 import { useRef } from "react";
 import { Mark } from "@/components/brand/Logo";
+import { HeroField } from "@/components/home/HeroField";
 import { ArrowRight, ButtonLink } from "@/components/site/Button";
+import { Magnetic } from "@/components/motion/Magnetic";
 import { site } from "@/lib/site";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -36,6 +38,9 @@ export function Hero() {
       ref={ref}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-[var(--header-h)]"
     >
+      {/* The lattice, behind everything. */}
+      <HeroField />
+
       {/* Light bleeding from behind the mark — the two accents, lit rather
           than printed. Blurred radial gradients, so they cost one paint. */}
       <motion.div
@@ -106,13 +111,17 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.86, ease: EASE }}
           >
-            <ButtonLink href="/contact" size="lg">
-              Request a consultation
-              <ArrowRight />
-            </ButtonLink>
-            <ButtonLink href="/about" variant="secondary" size="lg">
-              Meet George
-            </ButtonLink>
+            <Magnetic>
+              <ButtonLink href="/contact" size="lg">
+                Request a consultation
+                <ArrowRight />
+              </ButtonLink>
+            </Magnetic>
+            <Magnetic>
+              <ButtonLink href="/about" variant="secondary" size="lg">
+                Meet George
+              </ButtonLink>
+            </Magnetic>
           </motion.div>
         </div>
       </motion.div>
