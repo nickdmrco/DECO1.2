@@ -85,15 +85,18 @@ export function ServiceRail() {
         </div>
       </div>
 
-      <div className="mt-14 lg:mt-16">
+      <div className="mt-12 lg:mt-16">
         <ul
           ref={track}
-          className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-6 lg:snap-none lg:overflow-visible lg:px-[max(2rem,calc((100vw-76rem)/2+2rem))] lg:pb-0"
+          /* Stacked below lg, so nothing is hidden off the side of a phone. The
+             pinned horizontal rail only exists at lg and up, which is also the
+             only place the GSAP branch runs. */
+          className="grid gap-6 px-6 sm:grid-cols-2 lg:flex lg:grid-cols-none lg:px-[max(2rem,calc((100vw-76rem)/2+2rem))]"
         >
           {services.map((service, i) => (
             <li
               key={service.slug}
-              className="group w-[min(85vw,22rem)] shrink-0 snap-center lg:w-[24rem]"
+              className="group w-full lg:w-[24rem] lg:shrink-0"
             >
               <Link
                 href={`/services#${service.slug}`}
