@@ -5,10 +5,12 @@ import { partners } from "@/lib/site";
    the files arrive, keeping the same grid. */
 export function Partners() {
   return (
-    <section className="border-y border-line bg-white py-16" aria-labelledby="partners">
+    <section data-ground="deep"
+      className="border-y border-line py-16"
+      aria-labelledby="partners">
       <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
         <Reveal>
-          <h2 id="partners" className="label text-center text-slate">
+          <h2 id="partners" className="label text-center text-muted">
             Strategic partners
           </h2>
         </Reveal>
@@ -19,7 +21,7 @@ export function Partners() {
         >
           {partners.map((partner) => (
             <StaggerItem key={partner} as="li">
-              <span className="text-[1.0625rem] font-medium text-navy/55 transition-colors duration-300 hover:text-navy">
+              <span className="text-[1.0625rem] font-medium text-surf/55 transition-colors duration-300 hover:text-surf">
                 {partner}
               </span>
             </StaggerItem>

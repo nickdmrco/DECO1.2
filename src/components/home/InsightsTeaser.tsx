@@ -8,7 +8,8 @@ export function InsightsTeaser({ posts }: { posts: Post[] }) {
   if (posts.length === 0) return null;
 
   return (
-    <section className="bg-mist py-28 lg:py-36">
+    <section data-ground="raised"
+      className="py-28 lg:py-36">
       <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading

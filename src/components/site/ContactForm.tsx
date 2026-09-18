@@ -11,9 +11,9 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 type Errors = Record<string, string>;
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3.5 text-[1.0625rem] text-navy " +
-  "transition-colors duration-300 placeholder:text-slate/55 " +
-  "focus:border-deep focus:outline-none focus-visible:outline-none";
+  "w-full rounded-xl border border-line bg-deep px-4 py-3.5 text-[1.0625rem] text-surf " +
+  "transition-colors duration-300 placeholder:text-muted/60 " +
+  "focus:border-blue focus:outline-none focus-visible:outline-none";
 
 function Field({
   id,
@@ -30,7 +30,7 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={id} className="label block text-slate">
+      <label htmlFor={id} className="label block text-muted">
         {label}
       </label>
       <div className="mt-2.5">{children}</div>
@@ -38,7 +38,7 @@ function Field({
         {error ? (
           <motion.p
             role="alert"
-            className="mt-2 text-[0.8125rem] text-deep"
+            className="mt-2 text-[0.8125rem] text-blue"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
@@ -98,12 +98,12 @@ export function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="rounded-2xl border border-line bg-white p-10 text-center"
+            className="rounded-2xl border border-line bg-raised p-10 text-center"
           >
             <Mark className="mx-auto w-16" animate="draw" />
-            <h2 className="mt-8 text-h2 text-navy">Thank you — it&rsquo;s on its way.</h2>
+            <h2 className="mt-8 text-h2 text-surf">Thank you — it&rsquo;s on its way.</h2>
             <span className="rule-green mx-auto mt-5" aria-hidden="true" />
-            <p className="mx-auto mt-6 max-w-md text-body text-slate">
+            <p className="mx-auto mt-6 max-w-md text-body text-muted">
               George reads every one of these himself. Expect a reply within two business
               days.
             </p>
@@ -125,7 +125,7 @@ export function ContactForm() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="rounded-2xl border border-line bg-white p-7 sm:p-10"
+            className="rounded-2xl border border-line bg-raised p-7 sm:p-10"
           >
             {/* Honeypot — hidden from people, irresistible to bots. */}
             <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
@@ -210,7 +210,7 @@ export function ContactForm() {
               {formError ? (
                 <motion.p
                   role="alert"
-                  className="mt-6 rounded-xl border border-deep/25 bg-mist px-4 py-3 text-[0.9375rem] text-navy"
+                  className="mt-6 rounded-xl border border-blue/25 bg-raised px-4 py-3 text-[0.9375rem] text-surf"
                   initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
@@ -226,7 +226,7 @@ export function ContactForm() {
                 {state === "sending" ? (
                   <motion.span
                     aria-hidden="true"
-                    className="h-4 w-4 rounded-full border-2 border-white/35 border-t-white"
+                    className="h-4 w-4 rounded-full border-2 border-muted/40 border-t-white"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
                   />
@@ -234,7 +234,7 @@ export function ContactForm() {
                   <ArrowRight />
                 )}
               </Button>
-              <p className="text-[0.8125rem] text-slate">
+              <p className="text-[0.8125rem] text-muted">
                 We reply to every enquiry. No lists, no sequences.
               </p>
             </div>

@@ -9,8 +9,8 @@ import { createClient } from "@/lib/supabase/client";
 import { slugify, type Post, type PostStatus } from "@/lib/posts";
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-[1rem] text-navy " +
-  "transition-colors duration-300 placeholder:text-slate/50 focus:border-deep focus:outline-none";
+  "w-full rounded-xl border border-line-light bg-white px-4 py-3 text-[1rem] text-deep " +
+  "transition-colors duration-300 placeholder:text-ink-muted/50 focus:border-blue-deep focus:outline-none";
 
 type Draft = {
   title: string;
@@ -147,13 +147,13 @@ export function PostEditor({ post }: { post?: Post }) {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
-      <div className="rounded-2xl border border-line bg-white p-6 sm:p-8">
+      <div className="rounded-2xl border border-line-light bg-white p-6 sm:p-8">
         <div className="flex items-center justify-between gap-4">
-          <h1 className="text-h3 text-navy">{post ? "Edit post" : "New post"}</h1>
+          <h1 className="text-h3 text-deep">{post ? "Edit post" : "New post"}</h1>
           <button
             type="button"
             onClick={() => setPreview((p) => !p)}
-            className="text-[0.875rem] font-medium text-deep transition-colors hover:text-navy"
+            className="text-[0.875rem] font-medium text-deep transition-colors hover:text-deep"
           >
             {preview ? "Back to editing" : "Preview"}
           </button>
@@ -162,18 +162,18 @@ export function PostEditor({ post }: { post?: Post }) {
 
         {preview ? (
           <div className="mt-8">
-            <h2 className="text-h2 text-navy">{draft.title || "Untitled"}</h2>
+            <h2 className="text-h2 text-deep">{draft.title || "Untitled"}</h2>
             {draft.excerpt ? (
-              <p className="mt-4 text-[1.125rem] text-slate">{draft.excerpt}</p>
+              <p className="mt-4 text-[1.125rem] text-ink-muted">{draft.excerpt}</p>
             ) : null}
-            <div className="mt-6 border-t border-line pt-2">
+            <div className="mt-6 border-t border-line-light pt-2">
               <Markdown>{draft.body || "_Nothing written yet._"}</Markdown>
             </div>
           </div>
         ) : (
           <div className="mt-8 space-y-6">
             <div>
-              <label htmlFor="title" className="label block text-slate">
+              <label htmlFor="title" className="label block text-ink-muted">
                 Title
               </label>
               <input
@@ -186,7 +186,7 @@ export function PostEditor({ post }: { post?: Post }) {
             </div>
 
             <div>
-              <label htmlFor="excerpt" className="label block text-slate">
+              <label htmlFor="excerpt" className="label block text-ink-muted">
                 Excerpt
               </label>
               <textarea
@@ -200,7 +200,7 @@ export function PostEditor({ post }: { post?: Post }) {
             </div>
 
             <div>
-              <label htmlFor="body" className="label block text-slate">
+              <label htmlFor="body" className="label block text-ink-muted">
                 Body · Markdown
               </label>
               <textarea
@@ -217,13 +217,13 @@ export function PostEditor({ post }: { post?: Post }) {
       </div>
 
       <aside className="space-y-6 lg:sticky lg:top-8">
-        <div className="rounded-2xl border border-line bg-white p-6">
-          <h2 className="label text-slate">Publishing</h2>
+        <div className="rounded-2xl border border-line-light bg-white p-6">
+          <h2 className="label text-ink-muted">Publishing</h2>
           <span className="rule-green mt-4" aria-hidden="true" />
 
           <div className="mt-6 space-y-5">
             <div>
-              <label htmlFor="slug" className="label block text-slate">
+              <label htmlFor="slug" className="label block text-ink-muted">
                 Slug
               </label>
               <input
@@ -235,11 +235,11 @@ export function PostEditor({ post }: { post?: Post }) {
                 }}
                 className={`${field} mt-2.5 font-mono text-[0.875rem]`}
               />
-              <p className="mt-2 truncate text-[0.75rem] text-slate">/insights/{draft.slug}</p>
+              <p className="mt-2 truncate text-[0.75rem] text-ink-muted">/insights/{draft.slug}</p>
             </div>
 
             <div>
-              <label htmlFor="published_at" className="label block text-slate">
+              <label htmlFor="published_at" className="label block text-ink-muted">
                 Publish date
               </label>
               <input
@@ -249,11 +249,11 @@ export function PostEditor({ post }: { post?: Post }) {
                 onChange={(e) => set("published_at", e.target.value)}
                 className={`${field} mt-2.5 text-[0.875rem]`}
               />
-              <p className="mt-2 text-[0.75rem] text-slate">Leave empty to stamp on publish.</p>
+              <p className="mt-2 text-[0.75rem] text-ink-muted">Leave empty to stamp on publish.</p>
             </div>
 
             <div>
-              <label htmlFor="tags" className="label block text-slate">
+              <label htmlFor="tags" className="label block text-ink-muted">
                 Tags
               </label>
               <input
@@ -285,8 +285,8 @@ export function PostEditor({ post }: { post?: Post }) {
                 exit={{ opacity: 0 }}
                 className={`mt-5 rounded-xl px-4 py-3 text-[0.875rem] ${
                   message.tone === "ok"
-                    ? "bg-mist text-navy"
-                    : "border border-deep/25 bg-mist text-navy"
+                    ? "bg-white text-deep"
+                    : "border border-blue-deep/25 bg-white text-deep"
                 }`}
               >
                 {message.text}
@@ -295,8 +295,8 @@ export function PostEditor({ post }: { post?: Post }) {
           </AnimatePresence>
         </div>
 
-        <div className="rounded-2xl border border-line bg-white p-6">
-          <h2 className="label text-slate">Cover image</h2>
+        <div className="rounded-2xl border border-line-light bg-white p-6">
+          <h2 className="label text-ink-muted">Cover image</h2>
           <span className="rule-green mt-4" aria-hidden="true" />
           {draft.cover_url ? (
             <div className="mt-6">
@@ -305,13 +305,13 @@ export function PostEditor({ post }: { post?: Post }) {
               <button
                 type="button"
                 onClick={() => set("cover_url", "")}
-                className="mt-3 text-[0.8125rem] text-deep transition-colors hover:text-navy"
+                className="mt-3 text-[0.8125rem] text-deep transition-colors hover:text-deep"
               >
                 Remove
               </button>
             </div>
           ) : (
-            <p className="mt-5 text-[0.8125rem] leading-relaxed text-slate">
+            <p className="mt-5 text-[0.8125rem] leading-relaxed text-ink-muted">
               Real people doing real work — bright, natural light. No padlocks, no glowing
               shields.
             </p>
@@ -339,14 +339,14 @@ export function PostEditor({ post }: { post?: Post }) {
         </div>
 
         {post ? (
-          <div className="rounded-2xl border border-line bg-white p-6">
-            <h2 className="label text-slate">Danger zone</h2>
+          <div className="rounded-2xl border border-line-light bg-white p-6">
+            <h2 className="label text-ink-muted">Danger zone</h2>
             <span className="rule-green mt-4" aria-hidden="true" />
             <button
               type="button"
               onClick={remove}
               disabled={busy}
-              className="mt-5 text-[0.875rem] font-medium text-deep transition-colors hover:text-navy"
+              className="mt-5 text-[0.875rem] font-medium text-deep transition-colors hover:text-deep"
             >
               Delete this post
             </button>

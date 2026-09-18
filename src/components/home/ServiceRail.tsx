@@ -66,13 +66,14 @@ export function ServiceRail() {
       ref={section}
       id="what-we-do"
       aria-labelledby="what-we-do-title"
-      className="relative overflow-hidden bg-navy py-24 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0"
+      data-ground="void"
+      className="relative overflow-hidden py-24 lg:flex lg:h-screen lg:flex-col lg:justify-center lg:py-0"
     >
       <div className="mx-auto w-full max-w-[76rem] px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="label text-green">What we do</p>
-            <h2 id="what-we-do-title" className="mt-3 max-w-2xl text-h2 text-white sm:text-h1">
+            <p className="label text-kelp">What we do</p>
+            <h2 id="what-we-do-title" className="mt-3 max-w-2xl text-h2 text-surf sm:text-h1">
               Securing your tomorrow — strategic guidance for the security &amp; life
               safety industry
             </h2>
@@ -96,27 +97,27 @@ export function ServiceRail() {
             >
               <Link
                 href={`/services#${service.slug}`}
-                className="flex h-full flex-col rounded-2xl border border-white/12 bg-white/[0.04] p-8 transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] hover:-translate-y-1.5 hover:border-green/50 hover:bg-white/[0.07]"
+                className="flex h-full flex-col rounded-2xl border border-line bg-raised p-8 transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] hover:-translate-y-1.5 hover:border-kelp/50 hover:bg-raised/70"
               >
-                <span className="label text-white/35">
+                <span className="label text-muted/60">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <ServiceIcon
                   slug={service.slug}
                   className="mt-6 h-9 w-9 transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-110"
-                  blue="#8FD0EC"
+                  blue="var(--color-blue)"
                 />
-                <h3 className="mt-6 text-h3 text-white">{service.title}</h3>
-                <span className="mt-3 block h-[3px] w-10 origin-left bg-green transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-x-[1.8]" />
-                <p className="mt-5 text-[0.9375rem] leading-[1.6] text-white/70">
+                <h3 className="mt-6 text-h3 text-surf">{service.title}</h3>
+                <span className="mt-3 block h-[3px] w-10 origin-left bg-kelp transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-x-[1.8]" />
+                <p className="mt-5 text-[0.9375rem] leading-[1.6] text-muted">
                   {service.summary}
                 </p>
                 {service.note ? (
-                  <p className="mt-3 text-[0.8125rem] leading-[1.5] text-white/45">
+                  <p className="mt-3 text-[0.8125rem] leading-[1.5] text-muted/70">
                     {service.note}
                   </p>
                 ) : null}
-                <span className="mt-auto inline-flex items-center gap-2 pt-8 text-[0.9375rem] font-medium text-green">
+                <span className="mt-auto inline-flex items-center gap-2 pt-8 text-[0.9375rem] font-medium text-kelp">
                   Read more
                   <ArrowRight />
                 </span>
@@ -129,7 +130,7 @@ export function ServiceRail() {
       {/* Rail progress, drawn as the split bar. */}
       <div
         aria-hidden="true"
-        className="mx-auto mt-10 hidden h-[3px] w-full max-w-[76rem] bg-white/12 px-6 lg:block lg:px-8"
+        className="mx-auto mt-10 hidden h-[3px] w-full max-w-[76rem] bg-line px-6 lg:block lg:px-8"
       >
         <span
           ref={progress}

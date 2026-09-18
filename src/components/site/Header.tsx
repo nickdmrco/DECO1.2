@@ -32,7 +32,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
         condensed || open
-          ? "bg-white/90 shadow-[0_1px_0_var(--color-line)] backdrop-blur-md"
+          ? "bg-deep/90 shadow-[0_1px_0_var(--color-line)] backdrop-blur-md"
           : "bg-transparent"
       }`}
       style={{ ["--header-h" as string]: "5.5rem" }}
@@ -55,13 +55,13 @@ export function Header() {
               key={item.href}
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
-              className="relative px-4 py-2 text-[0.9375rem] font-medium text-navy/85 transition-colors hover:text-navy"
+              className="relative px-4 py-2 text-[0.9375rem] font-medium text-surf/85 transition-colors hover:text-surf"
             >
               {item.label}
               {isActive(item.href) ? (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute inset-x-4 -bottom-0.5 h-[3px] rounded-full bg-green"
+                  className="absolute inset-x-4 -bottom-0.5 h-[3px] rounded-full bg-kelp"
                   transition={{ duration: 0.45, ease: EASE }}
                 />
               ) : null}
@@ -78,7 +78,7 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-navy md:hidden"
+          className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-surf md:hidden"
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           {/* Three bars folding into a cross. Transforms, not path morphing:
@@ -91,7 +91,7 @@ export function Header() {
             ].map((bar, i) => (
               <motion.span
                 key={bar.top}
-                className="absolute left-0 block h-[2px] w-6 rounded-full bg-current"
+                className="absolute left-0 block h-[2px] w-6 rounded-full bg-blue"
                 style={{ top: bar.top }}
                 animate={
                   open
@@ -114,7 +114,7 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="overflow-hidden border-t border-line bg-white md:hidden"
+            className="overflow-hidden border-t border-line bg-deep md:hidden"
           >
             <nav aria-label="Mobile" className="mx-auto max-w-[76rem] px-6 py-6">
               <ul className="flex flex-col">
@@ -128,7 +128,7 @@ export function Header() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="block border-b border-line py-4 text-h3 text-navy"
+                      className="block border-b border-line py-4 text-h3 text-surf"
                     >
                       {item.label}
                     </Link>

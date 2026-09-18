@@ -7,13 +7,13 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-void text-surf">
       <div className="mx-auto max-w-[76rem] px-6 py-20 lg:px-8">
         <div className="grid gap-14 md:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <LogoHorizontal size={28} tone="reversed" />
-            <p className="mt-6 max-w-sm text-body text-white/70">{site.positioning}</p>
-            <p className="label mt-8 text-green">
+            <LogoHorizontal size={28} tone="default" />
+            <p className="mt-6 max-w-sm text-body text-muted">{site.positioning}</p>
+            <p className="label mt-8 text-kelp">
               Est. {site.founded} · {site.location}
             </p>
             <ButtonLink href="/contact" className="mt-8">
@@ -23,13 +23,13 @@ export function Footer() {
           </div>
 
           <nav aria-label="Services">
-            <h2 className="label text-white/50">Services</h2>
+            <h2 className="label text-muted/70">Services</h2>
             <ul className="mt-5 space-y-3">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={`/services#${service.slug}`}
-                    className="text-[0.9375rem] text-white/80 transition-colors hover:text-green"
+                    className="text-[0.9375rem] text-muted transition-colors hover:text-kelp"
                   >
                     {service.title}
                   </Link>
@@ -39,13 +39,13 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Footer">
-            <h2 className="label text-white/50">Company</h2>
+            <h2 className="label text-muted/70">Company</h2>
             <ul className="mt-5 space-y-3">
               {nav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[0.9375rem] text-white/80 transition-colors hover:text-green"
+                    className="text-[0.9375rem] text-muted transition-colors hover:text-kelp"
                   >
                     {item.label}
                   </Link>
@@ -53,10 +53,10 @@ export function Footer() {
               ))}
             </ul>
 
-            <h2 className="label mt-10 text-white/50">Get in touch</h2>
-            <ul className="mt-5 space-y-3 text-[0.9375rem] text-white/80">
+            <h2 className="label mt-10 text-muted/70">Get in touch</h2>
+            <ul className="mt-5 space-y-3 text-[0.9375rem] text-muted">
               <li>
-                <a href={`mailto:${site.email}`} className="transition-colors hover:text-green">
+                <a href={`mailto:${site.email}`} className="transition-colors hover:text-kelp">
                   {site.email}
                 </a>
               </li>
@@ -64,7 +64,7 @@ export function Footer() {
                 <li>
                   <a
                     href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
-                    className="transition-colors hover:text-green"
+                    className="transition-colors hover:text-kelp"
                   >
                     {site.phone}
                   </a>
@@ -73,7 +73,7 @@ export function Footer() {
               <li>
                 <a
                   href={site.linkedin}
-                  className="transition-colors hover:text-green"
+                  className="transition-colors hover:text-kelp"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -84,7 +84,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/15 pt-8 text-[0.8125rem] text-white/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-[0.8125rem] text-muted/75 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.legalName}. All Rights Reserved.
           </p>

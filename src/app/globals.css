@@ -1,46 +1,59 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   DECO Ventures — brand tokens
-   Source: DECO Ventures Brand Board v1.0, September 2026
+   DECO Ventures — brand tokens, dark board
+
+   Deepwater, Current Blue, Kelp Green and Surf come from the dark brand
+   board. Void, Raised and Muted were sampled from the same artwork: the
+   page ground behind the cards, the lifted card fill, and the label grey.
+   Current Deep is Current Blue darkened to the same hue, for the one light
+   surface on the site (article bodies), where Current Blue itself only
+   reaches 2.2:1.
+
+   Contrast on Deepwater: Surf 14.7, Muted 8.1, Kelp 9.1, Current 6.8 —
+   all AA for any size. This is why the site went dark: on white, the green
+   was 2.3:1 and unusable as text.
    ------------------------------------------------------------------ */
 @theme {
-  /* Palette */
-  --color-blue: #1898cd; /* DECO Blue   — logo, headlines, icons        */
-  --color-green: #6cbf45; /* DECO Green  — accents, lines, highlights    */
-  --color-navy: #10324a; /* Harbor Navy — body text, dark sections      */
-  --color-deep: #0e73a1; /* Deep Blue   — buttons, links                */
-  --color-mist: #f2f8fb; /* Mist        — section backgrounds, cards    */
-  --color-slate: #4a6273; /* Slate       — captions, secondary text      */
-  --color-line: #e2e9ee; /* Line        — borders, dividers             */
+  --color-void: #0b1117; /* deepest ground — footer, page edges     */
+  --color-deep: #0a1f33; /* Deepwater — primary ground              */
+  --color-raised: #10304c; /* cards and panels on Deepwater         */
+  --color-line: #1a3a57; /* dividers on dark                        */
+  --color-surf: #e9f2f7; /* body text on dark, and the light ground */
+  --color-muted: #a8b7c4; /* secondary text on dark                 */
+  --color-blue: #2bb0ea; /* Current Blue — accent                */
+  --color-blue-deep: #12658f; /* Current Blue for light surfaces */
+  --color-kelp: #7fd35a; /* Kelp Green — accent                     */
+  --color-ink-muted: #456174; /* secondary text on Surf             */
+  --color-line-light: #cfdce5; /* dividers on Surf                  */
 
   /* One typeface does everything. Arial is the fallback. */
   --font-sans: var(--font-outfit), Arial, Helvetica, sans-serif;
 
-  /* Type scale · web (brand board §05) */
-  --text-display: 3.5rem; /* 56 */
+  /* Type scale · web */
+  --text-display: 3.5rem;
   --text-display--line-height: 1;
   --text-display--letter-spacing: -0.03em;
   --text-display--font-weight: 600;
 
-  --text-h1: 2.5rem; /* 40 */
+  --text-h1: 2.5rem;
   --text-h1--line-height: 1.1;
   --text-h1--letter-spacing: -0.02em;
   --text-h1--font-weight: 600;
 
-  --text-h2: 1.75rem; /* 28 */
+  --text-h2: 1.75rem;
   --text-h2--line-height: 1.2;
   --text-h2--letter-spacing: -0.01em;
   --text-h2--font-weight: 600;
 
-  --text-h3: 1.25rem; /* 20 */
+  --text-h3: 1.25rem;
   --text-h3--line-height: 1.3;
   --text-h3--font-weight: 500;
 
-  --text-body: 1.0625rem; /* 17 */
+  --text-body: 1.0625rem;
   --text-body--line-height: 1.6;
 
-  --text-label: 0.75rem; /* 12 */
+  --text-label: 0.75rem;
   --text-label--line-height: 1.2;
   --text-label--letter-spacing: 0.14em;
   --text-label--font-weight: 500;
@@ -50,18 +63,18 @@
 
 @layer base {
   :root {
-    /* Height of the sticky header, read by scroll-margin and pinned sections. */
     --header-h: 5.5rem;
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   html {
     -webkit-text-size-adjust: 100%;
+    background: var(--color-deep);
   }
 
   body {
-    background: #fff;
-    color: var(--color-navy);
+    background: var(--color-deep);
+    color: var(--color-surf);
     font-family: var(--font-sans);
     font-size: var(--text-body);
     line-height: 1.6;
@@ -69,30 +82,37 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Anchored sections clear the sticky header. */
+  /* The one light surface: article bodies. Opting in rather than out keeps
+     the dark ground the default everywhere else. */
+  .surface-light {
+    background: var(--color-surf);
+    color: var(--color-deep);
+    color-scheme: light;
+  }
+
   [id] {
     scroll-margin-top: calc(var(--header-h) + 1.5rem);
   }
 
   ::selection {
-    background: var(--color-green);
-    color: var(--color-navy);
+    background: var(--color-kelp);
+    color: var(--color-deep);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-deep);
+    outline: 2px solid var(--color-blue);
     outline-offset: 3px;
     border-radius: 2px;
   }
 }
 
 @layer components {
-  /* The green rule — from the line under "Ventures". 64 x 3, under section titles. */
+  /* The green rule — from the line under "Ventures". */
   .rule-green {
     display: block;
     width: 4rem;
     height: 3px;
-    background: var(--color-green);
+    background: var(--color-kelp);
     transform-origin: left center;
   }
 
@@ -102,7 +122,7 @@
     background: linear-gradient(
       to right,
       var(--color-blue) 0 50%,
-      var(--color-green) 50% 100%
+      var(--color-kelp) 50% 100%
     );
   }
 
@@ -113,9 +133,48 @@
     text-transform: uppercase;
     line-height: 1.2;
   }
+
+  /* ---------------------------------------------------------- atmosphere */
+
+  /* Film grain. One static SVG turbulence, painted once and held fixed, so
+     it costs nothing to scroll. Sits above content but below the header. */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 45;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Coloured light bleeding from behind an element. */
+  .glow-blue {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklab, var(--color-blue) 55%, transparent),
+      transparent 100%
+    );
+  }
+
+  .glow-kelp {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklab, var(--color-kelp) 45%, transparent),
+      transparent 100%
+    );
+  }
+
+  /* Darkens the edges of a full-bleed section so the centre reads as lit. */
+  .vignette {
+    background: radial-gradient(
+      120% 90% at 50% 40%,
+      transparent 35%,
+      color-mix(in oklab, var(--color-void) 85%, transparent) 100%
+    );
+  }
 }
 
-/* Respect the reader. Every motion component also checks this in JS. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

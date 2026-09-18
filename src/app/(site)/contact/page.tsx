@@ -22,7 +22,7 @@ export default function ContactPage() {
         lede={<p>{contactIntro}</p>}
       />
 
-      <section className="bg-white py-20 lg:py-28">
+      <section data-ground="deep" className="py-20 lg:py-28">
         <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:gap-20">
             <Reveal>
@@ -31,13 +31,13 @@ export default function ContactPage() {
 
             <Reveal delay={0.12} from="right">
               <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
-                <h2 className="label text-slate">Direct</h2>
+                <h2 className="label text-muted">Direct</h2>
                 <GreenRule className="mt-4" />
                 <ul className="mt-6 space-y-4 text-body">
                   <li>
                     <a
                       href={`mailto:${site.email}`}
-                      className="text-deep underline-offset-4 transition-colors hover:text-navy hover:underline"
+                      className="text-blue underline-offset-4 transition-colors hover:text-surf hover:underline"
                     >
                       {site.email}
                     </a>
@@ -46,7 +46,7 @@ export default function ContactPage() {
                     <li>
                       <a
                         href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
-                        className="text-deep underline-offset-4 transition-colors hover:text-navy hover:underline"
+                        className="text-blue underline-offset-4 transition-colors hover:text-surf hover:underline"
                       >
                         {site.phone}
                       </a>
@@ -57,28 +57,28 @@ export default function ContactPage() {
                       href={site.linkedin}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-deep underline-offset-4 transition-colors hover:text-navy hover:underline"
+                      className="text-blue underline-offset-4 transition-colors hover:text-surf hover:underline"
                     >
                       LinkedIn
                     </a>
                   </li>
                 </ul>
 
-                <p className="label mt-12 text-slate">Where we are</p>
+                <p className="label mt-12 text-muted">Where we are</p>
                 <GreenRule className="mt-4" />
-                <p className="mt-6 text-body text-slate">
+                <p className="mt-6 text-body text-muted">
                   {site.location}
                   <br />
                   Working with clients across North America.
                 </p>
 
-                <p className="label mt-12 text-slate">Who we work with</p>
+                <p className="label mt-12 text-muted">Who we work with</p>
                 <GreenRule className="mt-4" />
                 <ul className="mt-6 space-y-5">
                   {audienceValue.map((item) => (
                     <li key={item.who}>
-                      <p className="text-[0.9375rem] font-medium text-navy">{item.who}</p>
-                      <p className="mt-1 text-[0.875rem] text-slate">{item.value}</p>
+                      <p className="text-[0.9375rem] font-medium text-surf">{item.who}</p>
+                      <p className="mt-1 text-[0.875rem] text-muted">{item.value}</p>
                     </li>
                   ))}
                 </ul>
@@ -88,7 +88,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-mist py-20 lg:py-28">
+      <section data-ground="raised" className="border-t border-line py-20 lg:py-28">
         <div className="mx-auto max-w-[46rem] px-6">
           <SectionHeading label="Questions" title="Before you write" align="center" />
           <Faq />

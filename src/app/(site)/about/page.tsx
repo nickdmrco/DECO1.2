@@ -25,13 +25,13 @@ export default function AboutPage() {
       />
 
       {/* The firm ------------------------------------------------------- */}
-      <section className="bg-white py-24 lg:py-32">
+      <section data-ground="deep" className="py-24 lg:py-32">
         <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-[1fr_1fr] lg:gap-24">
             <div>
               <SectionHeading label="Who we help" title="Across the whole value chain" />
               <Reveal delay={0.16}>
-                <p className="mt-8 text-[1.125rem] leading-[1.6] text-navy">
+                <p className="mt-8 text-[1.125rem] leading-[1.6] text-surf">
                   {about.whoWeHelp}
                 </p>
               </Reveal>
@@ -39,8 +39,8 @@ export default function AboutPage() {
                 {audienceValue.map((item) => (
                   <StaggerItem key={item.who} as="li">
                     <div className="border-l-2 border-line pl-5">
-                      <p className="text-h3 text-navy">{item.who}</p>
-                      <p className="mt-1.5 text-[0.9375rem] text-slate">{item.value}</p>
+                      <p className="text-h3 text-surf">{item.who}</p>
+                      <p className="mt-1.5 text-[0.9375rem] text-muted">{item.value}</p>
                     </div>
                   </StaggerItem>
                 ))}
@@ -49,27 +49,27 @@ export default function AboutPage() {
 
             <div className="lg:pt-4">
               <Reveal from="right">
-                <div className="rounded-[2rem] bg-mist p-10">
-                  <p className="label text-slate">Our approach</p>
+                <div className="rounded-[2rem] bg-raised p-10">
+                  <p className="label text-muted">Our approach</p>
                   <GreenRule className="mt-5" />
-                  <p className="mt-7 text-[1.125rem] leading-[1.6] text-navy">
+                  <p className="mt-7 text-[1.125rem] leading-[1.6] text-surf">
                     {about.approach}
                   </p>
-                  <p className="mt-6 text-body text-slate">{about.scope}</p>
+                  <p className="mt-6 text-body text-muted">{about.scope}</p>
                 </div>
               </Reveal>
 
               <Reveal from="right" delay={0.12}>
-                <p className="label mt-14 text-slate">What sets us apart</p>
+                <p className="label mt-14 text-muted">What sets us apart</p>
                 <GreenRule className="mt-5" />
               </Reveal>
               <Stagger as="ul" className="mt-7 space-y-4" gap={0.07}>
                 {differentiators.map((line) => (
                   <StaggerItem key={line} as="li">
-                    <div className="flex gap-3 border-b border-line pb-4 text-[1.0625rem] text-navy">
+                    <div className="flex gap-3 border-b border-line pb-4 text-[1.0625rem] text-surf">
                       <span
                         aria-hidden="true"
-                        className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green"
+                        className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-kelp"
                       />
                       {line}
                     </div>
@@ -82,12 +82,12 @@ export default function AboutPage() {
       </section>
 
       {/* George ---------------------------------------------------------- */}
-      <section id="george" className="bg-mist py-24 lg:py-32">
+      <section data-ground="raised" id="george" className="py-24 lg:py-32">
         <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <Parallax speed={0.05}>
               <div className="relative lg:sticky lg:top-[calc(var(--header-h)+3rem)]">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-white">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-deep">
                   <Photo
                     photo={photos.founderPortrait}
                     hint={`Photograph of ${founder.name} — relaxed and approachable, at ESX or across a table.`}
@@ -104,10 +104,10 @@ export default function AboutPage() {
 
             <div>
               <Reveal>
-                <p className="label text-slate">{founder.role}</p>
+                <p className="label text-muted">{founder.role}</p>
               </Reveal>
               <Reveal delay={0.06}>
-                <h2 className="mt-3 text-h2 text-navy sm:text-h1">{founder.heading}</h2>
+                <h2 className="mt-3 text-h2 text-surf sm:text-h1">{founder.heading}</h2>
               </Reveal>
               <GreenRule className="mt-5" delay={0.12} />
 
@@ -116,8 +116,8 @@ export default function AboutPage() {
                   <p
                     className={
                       i === 0
-                        ? "mt-8 text-[1.125rem] leading-[1.6] text-navy"
-                        : "mt-6 text-body text-slate"
+                        ? "mt-8 text-[1.125rem] leading-[1.6] text-surf"
+                        : "mt-6 text-body text-muted"
                     }
                   >
                     {paragraph}
@@ -126,7 +126,7 @@ export default function AboutPage() {
               ))}
 
               <Reveal delay={0.3}>
-                <p className="label mt-14 text-slate">Four decades, in order</p>
+                <p className="label mt-14 text-muted">Four decades, in order</p>
                 <GreenRule className="mt-5" />
               </Reveal>
               <Timeline />
@@ -137,7 +137,7 @@ export default function AboutPage() {
 
       {/* On stage — only rendered once a photograph is configured. */}
       {photos.founderStage ? (
-        <section aria-hidden="true" className="bg-mist">
+        <section aria-hidden="true" className="bg-raised">
           <div className="relative aspect-[21/9] w-full overflow-hidden">
             <Photo
               photo={photos.founderStage}
@@ -145,14 +145,14 @@ export default function AboutPage() {
               sizes="100vw"
             />
             <span
-              className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy/35 to-transparent"
+              className="pointer-events-none absolute inset-0 bg-linear-to-t from-void/60 to-transparent"
             />
           </div>
         </section>
       ) : null}
 
       {/* Awards ---------------------------------------------------------- */}
-      <section className="relative overflow-hidden bg-navy py-24 lg:py-32">
+      <section data-ground="void" className="relative overflow-hidden py-24 lg:py-32">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -left-40 bottom-0 hidden w-[32rem] opacity-[0.06] lg:block"
@@ -165,12 +165,12 @@ export default function AboutPage() {
             title="Recognized by the industry he helped build"
             tone="dark"
           />
-          <Stagger className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-white/12 sm:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-line sm:grid-cols-2 lg:grid-cols-3">
             {awards.map((award) => (
               <StaggerItem key={award}>
-                <div className="h-full bg-navy p-8">
-                  <span className="block h-[3px] w-10 bg-green" aria-hidden="true" />
-                  <p className="mt-6 text-h3 text-white">{award}</p>
+                <div className="h-full bg-void p-8">
+                  <span className="block h-[3px] w-10 bg-kelp" aria-hidden="true" />
+                  <p className="mt-6 text-h3 text-surf">{award}</p>
                 </div>
               </StaggerItem>
             ))}

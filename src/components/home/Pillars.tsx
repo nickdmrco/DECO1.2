@@ -7,8 +7,8 @@ import { pillars } from "@/lib/site";
 
 const TONE = {
   blue: "text-blue",
-  navy: "text-navy",
-  green: "text-green",
+  navy: "text-surf",
+  green: "text-kelp",
 } as const;
 
 /* A scrubbed scene: the left column sticks while the three pillars pass it.
@@ -24,16 +24,18 @@ export function Pillars() {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 90]);
 
   return (
-    <section className="bg-mist py-28 lg:py-36" aria-labelledby="how-we-help">
+    <section data-ground="raised"
+      className="py-28 lg:py-36"
+      aria-labelledby="how-we-help">
       <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
         <div ref={ref} className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+4rem)] lg:h-fit">
-            <p className="label text-slate">How we help</p>
-            <h2 id="how-we-help" className="mt-3 text-h2 text-navy sm:text-h1">
+            <p className="label text-muted">How we help</p>
+            <h2 id="how-we-help" className="mt-3 text-h2 text-surf sm:text-h1">
               Guide. Innovate. Thrive.
             </h2>
             <span className="rule-green mt-5" aria-hidden="true" />
-            <p className="mt-6 max-w-sm text-body text-slate">
+            <p className="mt-6 max-w-sm text-body text-muted">
               Three pillars, and most engagements touch all three before they&rsquo;re
               done.
             </p>
@@ -53,7 +55,7 @@ export function Pillars() {
               className="absolute left-0 top-2 hidden h-[calc(100%-1rem)] w-[3px] bg-line sm:block"
             >
               <motion.span
-                className="block h-full w-full origin-top bg-green"
+                className="block h-full w-full origin-top bg-kelp"
                 style={reduced ? { scaleY: 1 } : { scaleY: fill }}
               />
             </span>
@@ -69,11 +71,11 @@ export function Pillars() {
               >
                 <span
                   aria-hidden="true"
-                  className="absolute -left-[7px] top-1.5 hidden h-4 w-4 rounded-full border-[3px] border-mist bg-navy sm:block"
+                  className="absolute -left-[7px] top-1.5 hidden h-4 w-4 rounded-full border-[3px] border-line bg-void sm:block"
                 />
-                <p className="label text-slate">{String(i + 1).padStart(2, "0")}</p>
+                <p className="label text-muted">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className={`mt-3 text-h2 ${TONE[pillar.tone]}`}>{pillar.title}</h3>
-                <p className="mt-5 max-w-xl text-[1.125rem] leading-[1.6] text-navy">
+                <p className="mt-5 max-w-xl text-[1.125rem] leading-[1.6] text-surf">
                   {pillar.body}
                 </p>
               </motion.li>

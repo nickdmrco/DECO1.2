@@ -16,14 +16,16 @@ const sizes = {
 } as const;
 
 const tones = {
+  /* Deepwater on Current Blue is 6.8:1. White on Current Blue is 2.5:1 and
+     fails — the brand board sets its own blue swatch the same way. */
   primary:
-    "bg-deep text-white shadow-[0_1px_0_rgba(16,50,74,.08)] hover:-translate-y-0.5 " +
-    "hover:bg-navy hover:shadow-[0_10px_24px_-10px_rgba(14,115,161,.55)]",
+    "bg-blue text-deep font-semibold hover:-translate-y-0.5 hover:bg-kelp " +
+    "hover:shadow-[0_12px_32px_-12px_color-mix(in_oklab,var(--color-blue)_70%,transparent)]",
   secondary:
-    "border-2 border-green text-navy hover:-translate-y-0.5 hover:bg-green/10 " +
-    "hover:shadow-[0_10px_24px_-14px_rgba(108,191,69,.7)]",
+    "border-2 border-kelp text-surf hover:-translate-y-0.5 hover:bg-kelp/12 " +
+    "hover:shadow-[0_12px_32px_-16px_color-mix(in_oklab,var(--color-kelp)_70%,transparent)]",
   ghostLight:
-    "border-2 border-white/35 text-white hover:-translate-y-0.5 hover:border-white hover:bg-white/10",
+    "border-2 border-surf/25 text-surf hover:-translate-y-0.5 hover:border-surf/60 hover:bg-surf/5",
 } as const;
 
 type Variant = keyof typeof tones;

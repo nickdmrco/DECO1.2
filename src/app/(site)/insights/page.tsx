@@ -30,13 +30,13 @@ export default async function InsightsPage() {
         }
       />
 
-      <section className="bg-white py-20 lg:py-28">
+      <section data-ground="deep" className="py-20 lg:py-28">
         <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
           {posts.length === 0 ? (
-            <div className="rounded-2xl border border-line bg-mist px-8 py-20 text-center">
+            <div className="rounded-2xl border border-line bg-raised px-8 py-20 text-center">
               <span className="split-bar mx-auto block h-1 w-16 rounded-full" aria-hidden="true" />
-              <h2 className="mt-8 text-h2 text-navy">The first piece is on its way.</h2>
-              <p className="mx-auto mt-5 max-w-md text-body text-slate">
+              <h2 className="mt-8 text-h2 text-surf">The first piece is on its way.</h2>
+              <p className="mx-auto mt-5 max-w-md text-body text-muted">
                 New writing lands here. In the meantime, the fastest way to get our read
                 on something is to ask.
               </p>

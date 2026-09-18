@@ -21,7 +21,7 @@ export function Timeline() {
         className="absolute left-[4.5rem] top-3 hidden h-[calc(100%-1.5rem)] w-[3px] -translate-x-1/2 bg-line sm:block"
       >
         <motion.span
-          className="block h-full w-full origin-top bg-green"
+          className="block h-full w-full origin-top bg-kelp"
           style={reduced ? { scaleY: 1 } : { scaleY: fill }}
         />
       </span>
@@ -40,9 +40,9 @@ export function Timeline() {
           </span>
           <span
             aria-hidden="true"
-            className="absolute left-[4.5rem] top-[0.45rem] hidden h-3 w-3 -translate-x-1/2 rounded-full border-[3px] border-mist bg-navy sm:block"
+            className="absolute left-[4.5rem] top-[0.45rem] hidden h-3 w-3 -translate-x-1/2 rounded-full border-[3px] border-line bg-void sm:block"
           />
-          <span className="text-[1.0625rem] leading-snug text-navy sm:pl-8">
+          <span className="text-[1.0625rem] leading-snug text-surf sm:pl-8">
             {entry.label}
           </span>
         </motion.li>

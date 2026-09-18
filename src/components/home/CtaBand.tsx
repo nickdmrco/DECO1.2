@@ -5,7 +5,8 @@ import { contactIntro } from "@/lib/site";
 
 export function CtaBand() {
   return (
-    <section className="relative overflow-hidden bg-navy">
+    <section data-ground="void"
+      className="relative overflow-hidden">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-24 -top-24 w-[32rem] opacity-[0.06]"
@@ -14,12 +15,12 @@ export function CtaBand() {
       </div>
       <div className="relative mx-auto max-w-[76rem] px-6 py-24 text-center lg:px-8 lg:py-32">
         <Reveal>
-          <h2 className="mx-auto max-w-2xl text-h2 text-white sm:text-h1">
+          <h2 className="mx-auto max-w-2xl text-h2 text-surf sm:text-h1">
             Request your consultation
           </h2>
         </Reveal>
         <Reveal delay={0.08}>
-          <p className="mx-auto mt-6 max-w-2xl text-body text-white/70">{contactIntro}</p>
+          <p className="mx-auto mt-6 max-w-2xl text-body text-muted">{contactIntro}</p>
         </Reveal>
         <Reveal delay={0.14}>
           <div className="mt-10 flex flex-wrap justify-center gap-4">

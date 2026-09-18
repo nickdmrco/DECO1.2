@@ -14,17 +14,18 @@ export function Challenges() {
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-white py-28 lg:py-36">
+    <section data-ground="deep"
+      className="relative overflow-hidden py-28 lg:py-36">
       <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-[1fr_0.8fr]">
           <div>
             <Reveal>
-              <p className="label text-slate">What we solve</p>
+              <p className="label text-muted">What we solve</p>
             </Reveal>
             <GreenRule className="mt-5" delay={0.08} />
 
             <motion.h2
-              className="mt-8 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.025em] text-navy"
+              className="mt-8 text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-[1.15] tracking-[-0.025em] text-surf"
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "0px 0px -12% 0px" }}
@@ -48,19 +49,19 @@ export function Challenges() {
             </motion.h2>
 
             <Reveal delay={0.55}>
-              <p className="mt-9 max-w-xl border-l-2 border-green pl-5 text-[1.25rem] font-medium leading-[1.45] text-navy">
+              <p className="mt-9 max-w-xl border-l-2 border-kelp pl-5 text-[1.25rem] font-medium leading-[1.45] text-surf">
                 We address them by combining strategic planning with tactical execution.
               </p>
             </Reveal>
 
             <Reveal delay={0.62}>
-              <p className="mt-8 max-w-xl text-body text-slate">{about.whoWeHelp}</p>
+              <p className="mt-8 max-w-xl text-body text-muted">{about.whoWeHelp}</p>
             </Reveal>
           </div>
 
           <Reveal from="right" delay={0.12} className="justify-self-center">
             <div className="relative aspect-square w-[min(20rem,65vw)]">
-              <div className="absolute inset-0 rounded-[2rem] bg-mist" aria-hidden="true" />
+              <div className="absolute inset-0 rounded-[2rem] bg-raised" aria-hidden="true" />
               <Mark className="absolute inset-[18%]" animate="draw" trigger="view" />
             </div>
           </Reveal>

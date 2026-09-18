@@ -7,8 +7,8 @@ import { ArrowRight, Button } from "@/components/site/Button";
 import { createClient } from "@/lib/supabase/client";
 
 const field =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-[1rem] text-navy " +
-  "transition-colors duration-300 placeholder:text-slate/55 focus:border-deep focus:outline-none";
+  "w-full rounded-xl border border-line-light bg-white px-4 py-3 text-[1rem] text-deep " +
+  "transition-colors duration-300 placeholder:text-ink-muted/60 focus:border-blue-deep focus:outline-none";
 
 export function LoginForm() {
   const router = useRouter();
@@ -43,7 +43,7 @@ export function LoginForm() {
   return (
     <form onSubmit={onSubmit} className="mt-7 space-y-5">
       <div>
-        <label htmlFor="email" className="label block text-slate">
+        <label htmlFor="email" className="label block text-ink-muted">
           Email
         </label>
         <input
@@ -56,7 +56,7 @@ export function LoginForm() {
         />
       </div>
       <div>
-        <label htmlFor="password" className="label block text-slate">
+        <label htmlFor="password" className="label block text-ink-muted">
           Password
         </label>
         <input
@@ -74,7 +74,7 @@ export function LoginForm() {
           role="alert"
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-xl border border-deep/25 bg-mist px-4 py-3 text-[0.875rem] text-navy"
+          className="rounded-xl border border-blue-deep/25 bg-white px-4 py-3 text-[0.875rem] text-deep"
         >
           {error}
         </motion.p>

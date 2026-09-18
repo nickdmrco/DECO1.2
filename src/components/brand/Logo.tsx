@@ -49,15 +49,18 @@ const METRICS = {
 
 const DECO_TRACK = 0.05; // em — the board's wordmark is tracked slightly open
 
-export type LogoTone = "default" | "reversed" | "white" | "navy";
+/* The site runs on Deepwater, so "default" is the reversed lockup from the
+   dark board: DECO in white, VENTURES in Kelp Green, the mark in the
+   brighter pair. "ink" is the same mark with a Deepwater wordmark, for the
+   light reading and writing surfaces. */
+export type LogoTone = "default" | "white" | "ink";
 
 /* -------------------------------------------------------------- Mark */
 
 /** The mark keeps its colors when reversed; only the wordmark turns white. */
 function markColors(tone: LogoTone) {
   if (tone === "white") return { blue: "#fff", green: "#fff" };
-  if (tone === "navy") return { blue: "var(--color-navy)", green: "var(--color-navy)" };
-  return { blue: "var(--color-blue)", green: "var(--color-green)" };
+  return { blue: "var(--color-blue)", green: "var(--color-kelp)" };
 }
 
 export function Mark({
@@ -137,15 +140,17 @@ export function Mark({
 
 function Wordmark({ tone, stacked = false }: { tone: LogoTone; stacked?: boolean }) {
   const m = stacked ? METRICS.stacked : METRICS.horizontal;
-  const light = tone === "reversed" || tone === "white";
-
-  const decoColor = light
-    ? "#fff"
-    : tone === "navy"
-      ? "var(--color-navy)"
-      : "var(--color-blue)";
-  const venColor = light ? "#fff" : "var(--color-navy)";
-  const ruleColor = tone === "white" ? "#fff" : "var(--color-green)";
+  const decoColor =
+    tone === "ink" ? "var(--color-deep)" : tone === "white" ? "#fff" : "#fff";
+  /* The dark board sets VENTURES in Kelp Green on the reversed lockup,
+     where v1.0 turned it white. Following the newer board. */
+  const venColor =
+    tone === "ink"
+      ? "var(--color-deep)"
+      : tone === "white"
+        ? "#fff"
+        : "var(--color-kelp)";
+  const ruleColor = tone === "white" ? "#fff" : "var(--color-kelp)";
 
   /* Every part is display:block with its own line-height — inheriting the
      body's 1.6 would inflate the column. */

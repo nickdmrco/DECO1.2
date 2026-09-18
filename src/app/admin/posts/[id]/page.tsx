@@ -29,7 +29,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
         <Link
           href={`/insights/${post.slug}`}
           target="_blank"
-          className="text-[0.875rem] font-medium text-deep transition-colors hover:text-navy"
+          className="text-[0.875rem] font-medium text-deep transition-colors hover:text-deep"
         >
           View
         </Link>

@@ -23,8 +23,8 @@ export function Photo({
 }) {
   if (!photo) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-mist p-10 text-center">
-        <p className="max-w-[22ch] text-[0.8125rem] leading-relaxed text-slate/70">{hint}</p>
+      <div className="flex h-full w-full items-center justify-center bg-raised p-10 text-center">
+        <p className="max-w-[22ch] text-[0.8125rem] leading-relaxed text-muted/70">{hint}</p>
       </div>
     );
   }

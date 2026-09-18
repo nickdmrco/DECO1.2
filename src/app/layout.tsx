@@ -35,13 +35,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#10324A",
+  themeColor: "#0A1F33",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={outfit.variable}>
-      <body className="antialiased">{children}</body>
+      <body className="grain antialiased">{children}</body>
     </html>
   );
 }

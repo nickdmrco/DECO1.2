@@ -24,16 +24,16 @@ export function SectionHeading({
     >
       {label ? (
         <Reveal>
-          <p className={`label ${dark ? "text-green" : "text-slate"}`}>{label}</p>
+          <p className={`label ${dark ? "text-kelp" : "text-muted"}`}>{label}</p>
         </Reveal>
       ) : null}
       <Reveal delay={0.06}>
-        <h2 className={`mt-3 text-h2 sm:text-h1 ${dark ? "text-white" : "text-navy"}`}>{title}</h2>
+        <h2 className={`mt-3 text-h2 sm:text-h1 ${dark ? "text-surf" : "text-surf"}`}>{title}</h2>
       </Reveal>
       <GreenRule className={`mt-5 ${align === "center" ? "mx-auto" : ""}`} delay={0.12} />
       {intro ? (
         <Reveal delay={0.16}>
-          <p className={`mt-6 text-body ${dark ? "text-white/75" : "text-slate"}`}>{intro}</p>
+          <p className={`mt-6 text-body ${dark ? "text-muted" : "text-muted"}`}>{intro}</p>
         </Reveal>
       ) : null}
     </div>

@@ -41,28 +41,30 @@ export default async function PostPage({ params }: Params) {
   const isDraft = post.status === "draft";
 
   return (
-    <>
+    /* The one light surface on the site: long-form body text is genuinely
+       harder to read on dark, so articles sit on Surf. */
+    <div className="surface-light">
       <article>
-        <header className="bg-mist pb-16 pt-[calc(var(--header-h)+3.5rem)] lg:pb-20 lg:pt-[calc(var(--header-h)+5rem)]">
+        <header className="bg-white pb-16 pt-[calc(var(--header-h)+3.5rem)] lg:pb-20 lg:pt-[calc(var(--header-h)+5rem)]">
           <div className="mx-auto max-w-[46rem] px-6">
             <Link
               href="/insights"
-              className="label inline-flex items-center gap-2 text-slate transition-colors hover:text-deep"
+              className="label inline-flex items-center gap-2 text-ink-muted transition-colors hover:text-deep"
             >
               <span aria-hidden="true">&larr;</span> All insights
             </Link>
 
             {isDraft ? (
-              <p className="mt-6 inline-flex rounded-full bg-navy px-4 py-1.5 text-[0.75rem] font-medium tracking-wide text-white">
+              <p className="mt-6 inline-flex rounded-full bg-kelp px-4 py-1.5 text-[0.75rem] font-medium tracking-wide text-deep">
                 Draft — visible to admins only
               </p>
             ) : null}
 
-            <h1 className="mt-6 text-[clamp(2rem,4.5vw,2.75rem)] font-semibold leading-[1.12] tracking-[-0.025em] text-navy">
+            <h1 className="mt-6 text-[clamp(2rem,4.5vw,2.75rem)] font-semibold leading-[1.12] tracking-[-0.025em] text-deep">
               {post.title}
             </h1>
             <span className="rule-green mt-6" aria-hidden="true" />
-            <p className="label mt-6 text-slate">
+            <p className="label mt-6 text-ink-muted">
               {formatPostDate(post.published_at ?? post.created_at)}
               <span className="mx-2" aria-hidden="true">
                 ·
@@ -70,7 +72,7 @@ export default async function PostPage({ params }: Params) {
               {readingTime(post.body)}
             </p>
             {post.excerpt ? (
-              <p className="mt-8 text-[1.25rem] leading-[1.5] text-slate">{post.excerpt}</p>
+              <p className="mt-8 text-[1.25rem] leading-[1.5] text-ink-muted">{post.excerpt}</p>
             ) : null}
           </div>
         </header>
@@ -81,7 +83,7 @@ export default async function PostPage({ params }: Params) {
             <img
               src={post.cover_url}
               alt=""
-              className="-mt-10 w-full rounded-2xl object-cover shadow-[0_32px_64px_-40px_rgba(16,50,74,.45)]"
+              className="-mt-10 w-full rounded-2xl object-cover shadow-[0_32px_64px_-40px_rgba(10,31,51,.45)]"
             />
           </div>
         ) : null}
@@ -91,11 +93,11 @@ export default async function PostPage({ params }: Params) {
             <Markdown>{post.body}</Markdown>
 
             {post.tags.length > 0 ? (
-              <ul className="mt-14 flex flex-wrap gap-2.5 border-t border-line pt-8">
+              <ul className="mt-14 flex flex-wrap gap-2.5 border-t border-line-light pt-8">
                 {post.tags.map((tag) => (
                   <li
                     key={tag}
-                    className="rounded-full border border-line px-4 py-1.5 text-[0.8125rem] text-slate"
+                    className="rounded-full border border-line-light px-4 py-1.5 text-[0.8125rem] text-ink-muted"
                   >
                     {tag}
                   </li>
@@ -103,9 +105,9 @@ export default async function PostPage({ params }: Params) {
               </ul>
             ) : null}
 
-            <div className="mt-14 rounded-2xl bg-mist p-8 sm:p-10">
-              <p className="label text-slate">Working on this yourself?</p>
-              <p className="mt-4 text-h3 text-navy">
+            <div className="mt-14 rounded-2xl bg-white p-8 sm:p-10">
+              <p className="label text-ink-muted">Working on this yourself?</p>
+              <p className="mt-4 text-h3 text-deep">
                 Bring it to the table. {site.founder} reads every enquiry himself.
               </p>
               <ButtonLink href="/contact" className="mt-7">
@@ -118,9 +120,9 @@ export default async function PostPage({ params }: Params) {
       </article>
 
       {related.length > 0 ? (
-        <section className="border-t border-line bg-white py-20">
+        <section className="border-t border-line-light bg-white py-20">
           <div className="mx-auto max-w-[76rem] px-6 lg:px-8">
-            <h2 className="label text-slate">Keep reading</h2>
+            <h2 className="label text-ink-muted">Keep reading</h2>
             <span className="rule-green mt-4" aria-hidden="true" />
             <div className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((item) => (
@@ -132,6 +134,6 @@ export default async function PostPage({ params }: Params) {
           </div>
         </section>
       ) : null}
-    </>
+    </div>
   );
 }

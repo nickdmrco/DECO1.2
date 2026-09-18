@@ -11,8 +11,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 /* The tagline, colored the way the brand board sets it. */
 const TAGLINE = [
   { word: "Guide.", className: "text-blue" },
-  { word: "Innovate.", className: "text-navy" },
-  { word: "Thrive.", className: "text-green" },
+  { word: "Innovate.", className: "text-surf" },
+  { word: "Thrive.", className: "text-kelp" },
 ];
 
 export function Hero() {
@@ -28,18 +28,31 @@ export function Hero() {
   const markRotate = useTransform(scrollYProgress, [0, 1], [0, 28]);
   const markScale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
   const copyY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const glowY = useTransform(scrollYProgress, [0, 1], [0, 140]);
   const copyOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[100svh] items-center overflow-hidden bg-linear-to-b from-white via-white to-mist pt-[var(--header-h)]"
+      className="relative flex min-h-[100svh] items-center overflow-hidden pt-[var(--header-h)]"
     >
-      {/* Ghosted mark — the brand at architectural scale, well under the
-          10% blue / 5% green budget because of the opacity. */}
+      {/* Light bleeding from behind the mark — the two accents, lit rather
+          than printed. Blurred radial gradients, so they cost one paint. */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-[18%] top-1/2 hidden w-[52rem] -translate-y-1/2 opacity-[0.07] sm:block lg:-right-[8%]"
+        className="pointer-events-none absolute inset-0"
+        style={reduced ? undefined : { y: glowY }}
+      >
+        <div className="glow-blue absolute -right-[10%] top-[6%] h-[38rem] w-[38rem] opacity-30 blur-[90px]" />
+        <div className="glow-kelp absolute right-[6%] top-[42%] h-[26rem] w-[26rem] opacity-25 blur-[80px]" />
+        <div className="glow-blue absolute -left-[15%] bottom-[-10%] h-[30rem] w-[30rem] opacity-[0.18] blur-[100px]" />
+      </motion.div>
+      <div aria-hidden="true" className="vignette pointer-events-none absolute inset-0" />
+
+      {/* The mark at architectural scale, drifting against the scroll. */}
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-[18%] top-1/2 hidden w-[52rem] -translate-y-1/2 opacity-[0.16] sm:block lg:-right-[8%]"
         style={reduced ? undefined : { y: markY, rotate: markRotate, scale: markScale }}
       >
         <Mark className="h-full w-full" />
@@ -51,12 +64,12 @@ export function Hero() {
       >
         <div className="max-w-3xl">
           <motion.p
-            className="label flex items-center gap-3 text-slate"
+            className="label flex items-center gap-3 text-muted"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
           >
-            <span className="inline-block h-px w-8 bg-green" aria-hidden="true" />
+            <span className="inline-block h-px w-8 bg-kelp" aria-hidden="true" />
             Est. {site.founded} · {site.location}
           </motion.p>
 
@@ -79,7 +92,7 @@ export function Hero() {
           </h1>
 
           <motion.p
-            className="mt-8 max-w-2xl text-[clamp(1.125rem,2.4vw,1.5rem)] leading-[1.4] font-medium text-navy"
+            className="mt-8 max-w-2xl text-[clamp(1.125rem,2.4vw,1.5rem)] leading-[1.4] font-medium text-surf"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.72, ease: EASE }}
@@ -107,7 +120,7 @@ export function Hero() {
       <motion.a
         href="#what-we-do"
         aria-label="Scroll to what we do"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-slate md:flex"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted md:flex"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.3 }}
@@ -115,7 +128,7 @@ export function Hero() {
         <span className="label text-[0.625rem]">Scroll</span>
         <span className="relative block h-10 w-px bg-line" aria-hidden="true">
           <motion.span
-            className="absolute inset-x-0 top-0 block h-4 bg-green"
+            className="absolute inset-x-0 top-0 block h-4 bg-kelp"
             animate={reduced ? undefined : { y: ["-100%", "250%"] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           />
