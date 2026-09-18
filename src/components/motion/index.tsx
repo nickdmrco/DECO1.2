@@ -289,7 +289,6 @@ export function GreenRule({ className, delay = 0 }: { className?: string; delay?
 }
 
 export { SceneGround } from "./SceneGround";
-export { Magnetic } from "./Magnetic";
 
 export { EASE, useScroll, useTransform, useSpring, useMotionValue, motion };
 export type { MotionValue };
